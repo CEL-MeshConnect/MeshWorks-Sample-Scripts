@@ -1,7 +1,6 @@
 ####################################################
-# MONTY Dev Kit Device
-# Sample script 
-  
+# MeshWorks Sample Script
+# Fluid Level Sensor
 ####################################################
 # we have 3 Control Points: 2 LEDs and 1 PWM buzzer 
   
