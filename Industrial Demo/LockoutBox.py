@@ -69,12 +69,12 @@ def workMonitor():
         # Start the machine and lockout
         celPy.AdjustLocalControlPoint("lockOnOff", 0)
         celPy.AdjustRemoteControlPoint("Machine", "led", 0)       
-    if (tickCount > 14):
+    if (tickCount > 60):
         # Turn off the machine and unlock
         celPy.AdjustLocalControlPoint("lockOnOff", 1)
         celPy.AdjustRemoteControlPoint("Machine", "led", 1)
     tickCount = (tickCount + 1)
-    if (tickCount > 16):
+    if (tickCount > 75):
         # Clear after one more tick in the off state to restart routine
         tickCount = 0
   
