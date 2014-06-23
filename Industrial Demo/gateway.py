@@ -37,7 +37,19 @@ celPy.ControlValues = [greenValues, redValues, buzzerVal]
 def cpCallbackDataPointMessageReceived(deviceName, datapointName, discreteValueString, rangeValue):
     if (deviceName == "Level Sensor"):
         if (datapointName == "lvlSens"): 
-            cloudUpdate("flvl", rangeValue) 
+            cloudUpdate("flvl", rangeValue)
+
+def cpCallbackVariableUpdate(variableName, value):
+    if (variableName == "lockStatus"):
+        cloudUpdate("lkbx", value) 
+
+# Check for lockout override ever 20 seconds
+celPy.addTickFunction(pollCloudForUpdate, 200)
+
+def pollCloudForUpdate():
+    cloudSubscribe("lkbx", "Lockout Box", "lockOnOff")
+    cloudSubscribe("lkbx", "Machine", "led")
+
   
 # every half second 
 celPy.addTickFunction(blinkLed, 5)
