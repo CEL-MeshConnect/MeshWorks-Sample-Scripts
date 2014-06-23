@@ -94,13 +94,16 @@ alarmState = 0
 def alarm():
     if (alarmState == 0):
         if (tiltAlarmState == 0):
-            celPy.AdjustLocalControlPoint("buzzer", 0) 
+            celPy.AdjustLocalControlPoint("buzzer", 0)
+            celPy.AdjustRemoteControlPoint("Asset Beacon", "led", 1)
     if (alarmState == 1):
         celPy.AdjustLocalControlPoint("buzzer", 1000)
+        celPy.AdjustRemoteControlPoint("Asset Beacon", "led", 0)
         alarmState = 2
         return
     if (alarmState == 2):
         celPy.AdjustLocalControlPoint("buzzer", 3000)
+        celPy.AdjustRemoteControlPoint("Asset Beacon", "led", 0)
         alarmState = 1
 
 # alarm tick every 200 ms 
@@ -111,13 +114,16 @@ tiltAlarmState = 0
 def tiltAlarm():
     if (tiltAlarmState == 0):
         if (alarmState == 0):
-            celPy.AdjustLocalControlPoint("buzzer", 0) 
+            celPy.AdjustLocalControlPoint("buzzer", 0)
+            celPy.AdjustRemoteControlPoint("Asset Beacon", "led", 1)
     if (tiltAlarmState == 1):
         celPy.AdjustLocalControlPoint("buzzer", 6000)
+        celPy.AdjustRemoteControlPoint("Asset Beacon", "led", 0)
         tiltAlarmState = 2
         return
     if (tiltAlarmState == 2):
         celPy.AdjustLocalControlPoint("buzzer", 3000)
+        celPy.AdjustRemoteControlPoint("Asset Beacon", "led", 0)
         tiltAlarmState = 1
   
 celPy.addTickFunction(heartbeatLed, 20) 
