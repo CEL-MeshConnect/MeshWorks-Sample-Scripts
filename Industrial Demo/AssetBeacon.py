@@ -22,12 +22,10 @@ ledState = 0
 def heartbeatLed(): 
     if (ledState == 0): 
         celPy.AdjustLocalControlPoint("heartLed", 1)
-        celPy.AdjustLocalControlPoint("led", 1)
         ledState = 1
         return
     if (ledState == 1): 
         celPy.AdjustLocalControlPoint("heartLed", 0)
-        celPy.AdjustLocalControlPoint("led", 0)
         ledState = 0
   
 def main(): 
