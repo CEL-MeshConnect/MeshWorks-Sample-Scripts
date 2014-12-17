@@ -168,7 +168,7 @@ celPy.ControlPoints = [greenLed, redLed, buzzer]
 celPy.ControlValues = [greenValues, redValues, buzzerVal] 
   
 def main(): 
-    # Init temp/humidity sensor
+    # Disable buzzer at boot
     celPy.AdjustLocalControlPoint("buzzer", 0)
     # Init prox sensor
     writeI2c(0x5A, 0x17, 0x07)
