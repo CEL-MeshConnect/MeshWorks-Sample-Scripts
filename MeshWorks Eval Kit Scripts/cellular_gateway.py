@@ -24,7 +24,7 @@ buzzer = ["buzzer", "PB7", "PWM", "buzzerF", 1]
 buzzerVal = ["range", 1, 12, "tone"]  
   
 # device configuration
-celPy.ApplicationName = "MeshWorks Demo"  
+celPy.ApplicationName = "MeshWorks"  
 celPy.DeviceName = "Gateway"
 celPy.IsSleepyDevice = False
 celPy.DataCollectionPoints = [buttonPoint, reedSwPoint] 
@@ -35,38 +35,18 @@ celPy.ControlValues = [greenValues, redValues, buzzerVal]
 def cpCallbackDataPointMessageReceived(deviceName, datapointName, discreteValueString, rangeValue): 
     if (deviceName == "Sensor 1"):
         if (datapointName == "button"): 
-            if (discreteValueString == "down"): 
-                cloudUpdate("sens1btn", "down") 
-                print("sensor 1 button DOWN") 
-            if (discreteValueString == "up"): 
-                cloudUpdate("sens1btn", "up") 
-                print("sensor 1 button UP") 
+            cloudUpdate("sens1btn", rangeValue) 
         if (datapointName == "reedSw"): 
-            if (discreteValueString == "contact"):
-                cloudUpdate("sens1reedsw", "contact") 
-                print("reed switch CONTACT")
-            if (discreteValueString == "no contact"): 
-                cloudUpdate("sens1reedsw", "no contact")  
-                print("reed switch NO CONTACT") 
+            cloudUpdate("sens1reedsw", rangeValue) 
         if (datapointName == "tempSensor"): 
             cloudUpdate("sens1temp", rangeValue)
         if (datapointName == "humiditySensor"): 
             cloudUpdate("sens1hmdty", rangeValue) 
     if (deviceName == "Sensor 2"):
         if (datapointName == "button"): 
-            if (discreteValueString == "down"): 
-                cloudUpdate("sens2btn", "down") 
-                print("sensor 1 button DOWN") 
-            if (discreteValueString == "up"): 
-                cloudUpdate("sens2btn", "up") 
-                print("sensor 1 button UP") 
+            cloudUpdate("sens2btn", rangeValue) 
         if (datapointName == "reedSw"): 
-            if (discreteValueString == "contact"):
-                cloudUpdate("sens2reedsw", "contact") 
-                print("reed switch CONTACT")
-            if (discreteValueString == "no contact"): 
-                cloudUpdate("sens2reedsw", "no contact")  
-                print("reed switch NO CONTACT") 
+            cloudUpdate("sens2reedsw", rangeValue) 
         if (datapointName == "tempSensor"): 
             cloudUpdate("sens2temp", rangeValue)
         if (datapointName == "humiditySensor"): 
@@ -90,7 +70,4 @@ def blinkLed():
 # Define what executes once on power up or script start   
 def main(): 
     print("execute MAIN function")
-    # Uncomment the following line and use the CIK from device activation 
-    # in order to enable cloud connectivity 
-    #cloudInit([CIK]) 
-  
+    #cloudInit("[USER CIK]")
