@@ -119,9 +119,9 @@ def main():
     bConnected = 0
     # The follow variables are unique to each project and
     # can be found on the projects Credentials page
-    project = "AaXYLSrpLSTEO4ED"
-    username = "abcd1234-ab12-cd34-1234-abcde1234567"
-    md5secret = "64bc245216728cc22cc7d8bf981560ca"
+    project = "om4rakpxjdwsdho"
+    username = "489d6d62-e94d-4c9b-8dba-619a4e840cef"
+    md5secret = "e3b5cda38dae68a96e4f36b7eb383a9c"
     tcpPayload = x"1065"
     tcpPayload = (tcpPayload + x"0006") 
     tcpPayload = (tcpPayload + "MQIsdp")

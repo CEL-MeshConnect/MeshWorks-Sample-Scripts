@@ -1,4 +1,3 @@
-      
 # Gateway with control and data points
 # green LED input is PA6
 greenLed = ["greenLed", "PA6", "digital", "grLedF", 1]
